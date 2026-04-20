@@ -1,0 +1,47 @@
+<div class="min-h-screen bg-white flex flex-col items-center justify-center p-6 text-center font-sans relative overflow-hidden">
+  
+  <div class="absolute top-10 left-10 text-green-200 opacity-50 text-2xl"><i class="fa-solid fa-apple-whole"></i></div>
+  <div class="absolute bottom-20 left-20 text-green-200 opacity-50 text-2xl"><i class="fa-solid fa-carrot"></i></div>
+  <div class="absolute top-20 right-20 text-green-200 opacity-50 text-2xl"><i class="fa-solid fa-seedling"></i></div>
+
+  <div class="relative mb-8">
+    <div class="w-48 h-32 bg-white rounded-3xl shadow-xl flex items-center justify-center relative z-10 border border-gray-50">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+    </div>
+    <div class="absolute -top-4 -right-4 bg-green-500 text-white text-xs font-bold w-12 h-12 flex items-center justify-center rounded-full border-4 border-white shadow-lg z-20">
+      404
+    </div>
+    <div class="mt-4 flex justify-center space-x-2">
+      <div class="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
+      <div class="w-8 h-2 border-b-2 border-green-400 rounded-full"></div>
+      <div class="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
+    </div>
+  </div>
+
+  <h1 class="text-4xl font-extrabold text-slate-900 mb-2">Oops! Nothing Here</h1>
+  <p class="text-slate-500 max-w-sm mb-10 leading-relaxed">
+    Looks like this page went out of stock! Don't worry, there's plenty more fresh content to explore.
+  </p>
+
+  <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 mb-12">
+    <button routerLink="/" class="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-xl font-semibold transition-all shadow-md">
+      <span class="mr-2">🏠</span> Go to Homepage
+    </button>
+    <button (click)="goBack()" class="flex items-center justify-center bg-white border border-gray-200 hover:bg-gray-50 text-slate-700 px-8 py-3 rounded-xl font-semibold transition-all shadow-sm">
+      <span class="mr-2">←</span> Go Back
+    </button>
+  </div>
+
+  <div class="w-full max-w-2xl bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-inner">
+    <p class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-4">Popular Destinations</p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a routerLink="/products" class="px-5 py-2 bg-white border border-green-100 text-green-600 rounded-lg text-sm font-medium hover:bg-green-50 transition-colors">All Products</a>
+      <a routerLink="/categories" class="px-5 py-2 bg-gray-100 text-slate-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">Categories</a>
+      <a routerLink="/deals" class="px-5 py-2 bg-gray-100 text-slate-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">Today's Deals</a>
+      <a routerLink="/contact" class="px-5 py-2 bg-gray-100 text-slate-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">Contact Us</a>
+    </div>
+  </div>
+
+</div>

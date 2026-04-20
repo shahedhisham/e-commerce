@@ -1,0 +1,113 @@
+<div class=" min-h-screen bg-gray-50/50">
+    <div class="bg-white border-b border-gray-100">
+        <div class="container mx-auto px-4 py-8">
+            <nav class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                <a 
+                routerLink="/"
+                class="hover:text-green-600 transition-colors cursor-pointer">
+                    Home
+                </a>
+                <span>/</span>
+                <span class="text-gray-900 font-medium">Wishlist</span>
+            </nav>
+            <div class="flex items-center justify-content-between">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center">
+                    <i class="fa-solid fa-heart text-red-700"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">
+                        My Wishlist
+                    </h1>
+                    <p class="text-gray-500 text-sm">
+                        {{wishlistItems().length}} item saved
+                    </p>
+                </div>
+               </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+            <div class="hidden md:grid grid-cols-12 gap-4 px-6 py-4 bg-gray-50 border-b border-gray-100 text-sm font-medium text-gray-500">
+                <div class="col-span-6">Product</div>
+                <div class="col-span-2 text-center">Price</div>
+                <div class="col-span-2 text-center">Status</div>
+                <div class="col-span-2 text-center">Action</div>
+            </div>
+            @for (product of wishlistItems(); track product._id) {
+            <div class="divide-y divide-gray-100">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 p-4 md:px-6 md:py-5 items-center hover:bg-gray-50/50 transition-colors">
+                    <div class="md:col-span-6 flex items-center gap-4">
+                        <a class="w-20 h-20 rounded-xl bg-gray-50 border border-gray-100 overflow-hidden shrink-0">
+                            <img
+                              [src]="product.imageCover"
+                              [alt]="product.title"
+                              class="w-full h-auto object-contain"
+                             />
+                        </a>
+                        <div class="min-w-0">
+                            <a class="font-medium text-gray-900 hover:text-green-600 transition-colors line-clamp-2"></a>
+                            <p class="text-sm text-gray-400 mt-1">Women's Fashion</p>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 flex md:justify-center items-center gap-2">
+                        <span class="md:hidden text-sm text-gray-500">Price: </span>
+                        <div class="text-right md:text-center">
+                            <div class="font-semibold text-gray-900"> {{product.price}} EGP</div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 flex md:justify-center">
+                        <span class="md:hidden text-sm text-gray-500 mr-2">Status:</span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-green-50 text-green-700">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                            {{ isInCart(product._id) ? 'In Cart' : (product.quantity > 0 ? 'In Stock' : 'Out Stock') }}
+                        </span>
+                    </div>
+                    <div class="md:col-span-2 flex items-center gap-2 md:justify-center">
+                       @if (isInCart(product._id)) {
+                       <a
+                        routerLink="/cart"
+                        class="flex-1 md:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all">
+                        <i class="fa-solid fa-check"></i>
+                        View Cart
+                        </a>
+                        } @else if (product.quantity > 0) {
+                        <button
+                        (click)="addToCart(product._id)"
+                        class="flex-1 md:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium bg-emerald-600 hover:bg-emerald-700 text-white">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        Add To Cart
+                        </button>
+                        }
+                        <button
+                        (click)="deleteItem(product._id)"
+                         class="w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center text-gray-400 hover:text-red-500 hover:border-red-200 hover:bg-red-50 transition-all disabled:opacity-50">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            } @empty {
+          <div class="py-20 text-center">
+            <div
+              class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fa-solid fa-heart-crack text-3xl text-gray-300"></i>
+            </div>
+            <h2 class="text-xl font-medium text-gray-900">Your wishlist is empty</h2>
+            <p class="text-gray-500 mt-2">Start adding some items you love!</p>
+            <a
+              routerLink="/shop"
+              class="mt-6 inline-block text-green-600 font-medium hover:underline"
+              >Go to Shop</a
+            >
+          </div>
+        }
+        </div>
+        <div class="mt-8 flex items-center justify-between">
+            <a class="text-gray-500 hover:text-green-600 text-sm font-medium transition-colors">← Continue Shopping</a>
+        </div>
+    </div>
+
+</div>
